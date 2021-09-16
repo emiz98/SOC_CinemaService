@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Add New Date</h1>
+            <div class="card-body">
+                <form th:action="@{/dates}" th:object="${dateSlot}" method="post"/>
+                <div class="form-group">
+                    <label>Movie Date</label>
+                    <input type="date" name="date" th:value="*{date}" class="form-control" required/>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

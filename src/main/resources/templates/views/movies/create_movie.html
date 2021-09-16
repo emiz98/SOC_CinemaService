@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Add New Movie</h1>
+            <div class="card-body">
+                <form th:action="@{/movies}" th:object="${movie}" method="post" enctype="multipart/form-data"/>
+                <div class="form-group">
+                    <label>Movie Title</label>
+                    <input type="text" name="title" th:value="*{title}" class="form-control"
+                           placeholder="Enter Movie Title" required/>
+                    <label>Movie Description</label>
+                    <input type="text" name="description" th:value="*{description}" class="form-control"
+                           placeholder="Enter Movie Description"/>
+                    <label>Movie Trailer</label>
+                    <input type="text" name="youtube" th:value="*{youtube}" class="form-control"
+                           placeholder="Enter Movie Trailer Link"/>
+                    <label>Movie TMDB Id</label>
+                    <input type="number" name="tmdbId" th:value="*{tmdbId}" class="form-control"
+                           placeholder="Enter Movie TMDB Id"/>
+                    <label>Upload Poster Image</label>
+                    <input type="file" name="file" th:value="*{file}" class="form-control"/>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

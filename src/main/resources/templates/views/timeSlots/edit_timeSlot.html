@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update TimeSlot</h1>
+            <div class="card-body">
+                <form th:action="@{/timeSlots/{id} (id=${timeSlot.id})}" th:object="${timeSlot}" method="post"/>
+                <div class="form-group">
+                    <label>Time Slot Title</label>
+                    <input type="text" name="title" th:value="*{timeSlot.title}" class="form-control"
+                           placeholder="Enter Time Slot Title" required/>
+                    <label>Time Slot Time</label>
+                    <input type="time" name="time" th:value="*{timeSlot.time}" class="form-control"
+                           placeholder="Enter Time Slot Time"/>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

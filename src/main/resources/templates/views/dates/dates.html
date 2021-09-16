@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-3"><a th:href="@{/dates/new}" class="btn btn-primary btn-sm mb-3">Add Date</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="dateSlot:${dateSlots}">
+                    <td th:text="${dateSlot.id}"></td>
+                    <td th:text="${dateSlot.date}"></td>
+                    <td>
+                        <a th:href="@{/dates/{id} (id=${dateSlot.id}) }" type="button" class="btn btn-danger"><i
+                                class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

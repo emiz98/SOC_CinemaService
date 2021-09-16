@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+<!--        <div class="col-lg-3"><a th:href="@{/movies/new}" class="btn btn-primary btn-sm mb-3">Add Movie</a></div>-->
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">MovieId</th>
+                    <th scope="col">DateId</th>
+                    <th scope="col">TimeId</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="movieShowTime:${movieShowTimes}">
+                    <td th:text="${movieShowTime.id}"></td>
+                    <td th:text="${movieShowTime.movieId}"></td>
+                    <td th:text="${movieShowTime.dateId}"></td>
+                    <td th:text="${movieShowTime.timeId}"></td>
+                    <td>
+<!--                        <a th:href="@{/movies/edit/{id} (id=${movie.id}) }" type="button" class="btn btn-success"><i-->
+<!--                                class="fas fa-edit"></i></a>-->
+<!--                        <a th:href="@{/movies/{id} (id=${movie.id}) }" type="button" class="btn btn-danger"><i-->
+<!--                                class="far fa-trash-alt"></i></a>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

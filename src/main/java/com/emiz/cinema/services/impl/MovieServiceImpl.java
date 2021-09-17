@@ -6,6 +6,7 @@ import com.emiz.cinema.services.MovieService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,6 +51,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteMovie(Long id) {
+        Movie movie = movieRepo.findById(id).get();
+        String imageName = movie.getPoster_path();
+        File fileToDelete = new File("src/main/resources/static/assets/images/"+imageName);
+        fileToDelete.delete();
         movieRepo.deleteById(id);
     }
 }

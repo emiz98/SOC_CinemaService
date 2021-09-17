@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Controller
 public class MovieController {
 
@@ -30,18 +32,14 @@ public class MovieController {
     }
 
     @PostMapping("/movies")
-    public String storeMovie(@ModelAttribute("movie") Movie movie) {
-        movieService.storeMovie(movie);
+    public String storeMovie(@ModelAttribute("movie") Movie movie, @RequestParam("imageFile") MultipartFile imageFile) {
+        try {
+            movieService.storeMovie(movie,imageFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/movies";
     }
-
-    @PostMapping("/uploadImage")
-    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile){
-        movieService.saveImage(imageFile);
-        return "redirect:/movies";
-    }
-
-
 
     @GetMapping("/movies/edit/{id}")
     public String editMovie(@PathVariable("id") Long id, Model model) {

@@ -23,15 +23,11 @@
                     <input type="number" name="tmdbId" th:value="*{tmdbId}" class="form-control"
                            placeholder="Enter Movie TMDB Id"/>
                     <label>Upload Poster Image</label>
-                    <input type="file" name="file" th:value="*{file}" class="form-control"/>
+                    <input type="file" name="imageFile" class="form-control"/>
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                 </div>
-                </form>
-                <form action="/uploadImage" method="post" enctype="multipart/form-data">
-                    <input type="file" name="imageFile">
-                    <input type="submit" value="upload">
                 </form>
             </div>
         </div>

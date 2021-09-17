@@ -6,7 +6,12 @@ import com.emiz.cinema.services.MovieService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -23,7 +28,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie storeMovie(Movie movie) {
+    public Movie storeMovie(Movie movie,MultipartFile imageFile) throws IOException {
+        String folder = "src/main/resources/static/assets/images/";
+        String filename = UUID.randomUUID().toString();
+        byte[] bytes = imageFile.getBytes();
+        Path path = Paths.get(folder + filename+".jpg");
+        Files.write(path,bytes);
+        movie.setPoster_path(filename+".jpg");
         return movieRepo.save(movie);
     }
 
@@ -40,10 +51,5 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteMovie(Long id) {
         movieRepo.deleteById(id);
-    }
-
-    @Override
-    public void saveImage(MultipartFile imageFile) {
-
     }
 }

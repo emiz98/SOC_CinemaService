@@ -14,7 +14,6 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Title</th>
                     <th scope="col">Time</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -22,7 +21,6 @@
                 <tbody>
                 <tr th:each="timeSlot:${timeSlots}">
                     <td th:text="${timeSlot.id}"></td>
-                    <td th:text="${timeSlot.title}"></td>
                     <td th:text="${timeSlot.time}"></td>
                     <td>
                         <a th:href="@{/timeSlots/edit/{id} (id=${timeSlot.id}) }" type="button" class="btn btn-success"><i class="fas fa-edit"></i></a>

@@ -10,9 +10,6 @@
             <div class="card-body">
                 <form th:action="@{/timeSlots}" th:object="${timeSlot}" method="post"/>
                 <div class="form-group">
-                    <label>Time Slot Title</label>
-                    <input type="text" name="title" th:value="*{title}" class="form-control"
-                           placeholder="Enter Time Slot Title" required/>
                     <label>Time Slot Time</label>
                     <input type="time" name="time" th:value="*{time}" class="form-control"
                            placeholder="Enter Time Slot Time"/>

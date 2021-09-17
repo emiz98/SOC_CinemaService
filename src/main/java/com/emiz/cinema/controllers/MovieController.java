@@ -4,10 +4,8 @@ import com.emiz.cinema.models.Movie;
 import com.emiz.cinema.services.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MovieController {
@@ -36,6 +34,14 @@ public class MovieController {
         movieService.storeMovie(movie);
         return "redirect:/movies";
     }
+
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("imageFile") MultipartFile imageFile){
+        movieService.saveImage(imageFile);
+        return "redirect:/movies";
+    }
+
+
 
     @GetMapping("/movies/edit/{id}")
     public String editMovie(@PathVariable("id") Long id, Model model) {

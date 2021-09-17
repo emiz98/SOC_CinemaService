@@ -20,4 +20,14 @@ public class MovieDTServiceImpl implements MovieDTService {
     public List<MovieDateTime> getDTByMovieId(Long id) {
         return movieDTRepo.findByMovieId(id);
     }
+
+    @Override
+    public MovieDateTime storeMDT(MovieDateTime movieDateTime) {
+        return movieDTRepo.save(movieDateTime);
+    }
+
+    @Override
+    public void deleteShowDT(Long id) {
+        movieDTRepo.deleteById(id);
+    }
 }

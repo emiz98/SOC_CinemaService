@@ -46,7 +46,6 @@ public class TimeSlotController {
     @PostMapping("/timeSlots/{id}")
     public String updateTimeSlot(@PathVariable Long id, @ModelAttribute("timeSlot") TimeSlot timeSlot, Model model) {
         TimeSlot existingTimeSlot = timeSlotService.getTimeSlotById(id);
-        existingTimeSlot.setTitle(timeSlot.getTitle());
         existingTimeSlot.setTime(timeSlot.getTime());
 
         timeSlotService.updateTimeSlot(existingTimeSlot);

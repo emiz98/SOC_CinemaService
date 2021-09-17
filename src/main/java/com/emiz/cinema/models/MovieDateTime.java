@@ -10,16 +10,16 @@ public class MovieDateTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long movieId;
-    private Long dateId;
-    private Long timeId;
+    private String showDate;
+    private String showTime;
 
     public MovieDateTime() {
     }
 
-    public MovieDateTime(Long movieId, Long dateId, Long timeId) {
+    public MovieDateTime(Long movieId, String showDate, String showTime) {
         this.movieId = movieId;
-        this.dateId = dateId;
-        this.timeId = timeId;
+        this.showDate = showDate;
+        this.showTime = showTime;
     }
 
     public Long getId() {
@@ -38,19 +38,19 @@ public class MovieDateTime {
         this.movieId = movieId;
     }
 
-    public Long getDateId() {
-        return dateId;
+    public String getShowDate() {
+        return showDate;
     }
 
-    public void setDateId(Long dateId) {
-        this.dateId = dateId;
+    public void setShowDate(String showDate) {
+        this.showDate = showDate;
     }
 
-    public Long getTimeId() {
-        return timeId;
+    public String getShowTime() {
+        return showTime;
     }
 
-    public void setTimeId(Long timeId) {
-        this.timeId = timeId;
+    public void setShowTime(String showTime) {
+        this.showTime = showTime;
     }
 }

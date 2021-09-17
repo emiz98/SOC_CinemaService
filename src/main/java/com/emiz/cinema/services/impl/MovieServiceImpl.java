@@ -4,6 +4,7 @@ import com.emiz.cinema.models.Movie;
 import com.emiz.cinema.repos.MovieRepo;
 import com.emiz.cinema.services.MovieService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,5 +40,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteMovie(Long id) {
         movieRepo.deleteById(id);
+    }
+
+    @Override
+    public void saveImage(MultipartFile imageFile) {
+
     }
 }

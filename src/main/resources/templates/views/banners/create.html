@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Add New Banner</h1>
+            <div class="card-body">
+                <form th:action="@{/banners}" th:object="${banner}" method="post" enctype="multipart/form-data"/>
+                <div class="form-group">
+                    <label>Upload Banner Image</label>
+                    <input type="file" name="imageFile" class="form-control"/>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+  <div th:replace="fragments/header :: header"></div>
+  <div class="row">
+    <div class="col-lg-3"><a th:href="@{/banners/new}" class="btn btn-primary btn-sm mb-3">Add Banner</a></div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+
+      <div class="row mb-5">
+        <div class="col-md-4" th:each="banner:${banners}">
+          <div class="card">
+            <img th:src="@{'assets/banners/'+ ${banner.banner_image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a th:href="@{/banners/{id} (id=${banner.id}) }" type="button" class="btn btn-danger"><i
+                      class="far fa-trash-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

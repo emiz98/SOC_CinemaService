@@ -9,7 +9,7 @@ import java.util.List;
 public interface MovieService {
     List<Movie> getAllMovies();
     Movie storeMovie(Movie movie,MultipartFile imageFile) throws IOException;
-    Movie updateMovie(Movie movie);
+    Movie updateMovie(Movie movie,MultipartFile imageFile) throws IOException;
     Movie getMovieById(Long id);
     void deleteMovie(Long id);
 }

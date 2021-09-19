@@ -9,6 +9,7 @@ import java.util.List;
 public interface FoodService {
     List<Food> getAllFood();
     Food storeFood(Food food, MultipartFile imageFile) throws IOException;
-    Food updateFood(Food food);
+    Food getFoodById(Long id);
+    Food updateFood(Food food, MultipartFile imageFile) throws IOException;
     void deleteFood(Long id);
 }

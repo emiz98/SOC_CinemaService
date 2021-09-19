@@ -48,7 +48,7 @@ public class MovieController {
     }
 
     @PostMapping("/movies/{id}")
-    public String updateMovie(@PathVariable Long id, @ModelAttribute("movie") Movie movie, Model model) {
+    public String updateMovie(@PathVariable Long id, @ModelAttribute("movie") Movie movie,@RequestParam("imageFile") MultipartFile imageFile, Model model) {
         Movie existingMovie = movieService.getMovieById(id);
         existingMovie.setTitle(movie.getTitle());
         if (movie.getDescription() != "") {
@@ -64,7 +64,12 @@ public class MovieController {
         }
 
         existingMovie.setTmdbId(movie.getTmdbId());
-        movieService.updateMovie(existingMovie);
+
+        try {
+            movieService.updateMovie(existingMovie,imageFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/movies";
     }
 

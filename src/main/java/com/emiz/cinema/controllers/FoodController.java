@@ -41,9 +41,30 @@ public class FoodController {
         return "redirect:/foods";
     }
 
+    @GetMapping("/foods/edit/{id}")
+    public String editFood(@PathVariable("id") Long id, Model model){
+        model.addAttribute("food",foodService.getFoodById(id));
+        return "views/foods/edit";
+    }
+
     @GetMapping("/foods/{id}")
     public String deleteFood(@PathVariable Long id){
         foodService.deleteFood(id);
+        return "redirect:/foods";
+    }
+
+    @PostMapping("/foods/{id}")
+    public String updateFood(@PathVariable Long id, @ModelAttribute("food") Food food, @RequestParam("imageFile") MultipartFile imageFile,Model model){
+        Food existingFood = foodService.getFoodById(id);
+        existingFood.setTitle(food.getTitle());
+        existingFood.setDescription(food.getDescription());
+        existingFood.setPrice(food.getPrice());
+
+        try {
+            foodService.updateFood(existingFood,imageFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/foods";
     }
 }

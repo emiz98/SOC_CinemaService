@@ -8,7 +8,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <h1 class="text-center">Update Movie</h1>
             <div class="card-body">
-                <form th:action="@{/movies/{id} (id=${movie.id})}" th:object="${movie}" method="post"/>
+                <form th:action="@{/movies/{id} (id=${movie.id})}" th:object="${movie}" method="post"  enctype="multipart/form-data"/>
                 <div class="form-group">
                     <label>Movie Title</label>
                     <input type="text" name="title" th:value="*{movie.title}" class="form-control" placeholder="Enter Movie Title"/>
@@ -19,6 +19,11 @@
                     <label>Movie TMDB Id</label>
                     <input type="number" name="tmdbId" th:value="*{movie.tmdbId}" class="form-control" placeholder="Enter Movie TMDB Id"/>
                 </div>
+                <div class="row mb-5">
+                    <img th:src="@{'/assets/images/'+ ${movie.poster_path}}" class="card-img-top col-md-4" alt="...">
+                </div>
+                <label>Upload New Poster Image</label>
+                <input type="file" name="imageFile" class="form-control"/>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                 </div>

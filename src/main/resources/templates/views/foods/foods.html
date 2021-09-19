@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-3"><a th:href="@{/foods/new}" class="btn btn-primary btn-sm mb-3">Add Food</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="row mb-5">
+                <div class="col-md-4" th:each="food:${foods}">
+                    <div class="card">
+                        <img th:src="@{'assets/foods/'+ ${food.food_image}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${food.title}"></h5>
+                            <h6 class="card-title" th:text="${food.description}"></h6>
+                            <h6 class="card-title" th:text="${food.price}"></h6>
+                            <a th:href="@{/movies/edit/{id} (id=${food.id}) }" type="button" class="btn btn-success"><i
+                                    class="fas fa-edit"></i></a>
+                            <a th:href="@{/foods/{id} (id=${food.id}) }" type="button" class="btn btn-danger"><i
+                                    class="far fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

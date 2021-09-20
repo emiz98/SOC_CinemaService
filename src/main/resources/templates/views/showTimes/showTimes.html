@@ -19,6 +19,7 @@
                     <th scope="col">MovieId</th>
                     <th scope="col">DateId</th>
                     <th scope="col">TimeId</th>
+                    <th scope="col">Available Seats</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -28,6 +29,7 @@
                     <td th:text="${movieShowTime.movieId}"></td>
                     <td th:text="${movieShowTime.showDate}"></td>
                     <td th:text="${movieShowTime.showTime}"></td>
+                    <td th:text="${movieShowTime.availableSeats}"></td>
                     <td>
                         <a th:href="@{/showTimes/{movieId}/{id} (id=${movieShowTime.id},movieId=${movieId}) }" type="button" class="btn btn-danger"><i
                                 class="far fa-trash-alt"></i></a>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-3"><a th:href="@{/tickets/new/}" class="btn btn-primary btn-sm mb-3">Add Ticket</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">MovieId</th>
+                    <th scope="col">Show Date</th>
+                    <th scope="col">Show Time</th>
+                    <th scope="col">Customer Email</th>
+                    <th scope="col">Ordered Seats</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ticket:${tickets}">
+                    <td th:text="${ticket.id}"></td>
+                    <td th:text="${ticket.movieId}"></td>
+                    <td th:text="${ticket.showDate}"></td>
+                    <td th:text="${ticket.showTime}"></td>
+                    <td th:text="${ticket.email}"></td>
+                    <td th:text="${ticket.seats}"></td>
+                    <td>
+                        <a th:href="@{/tickets/{id} (id=${ticket.id}) }" type="button" class="btn btn-danger"><i
+                                class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

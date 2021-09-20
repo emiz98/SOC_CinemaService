@@ -3,8 +3,8 @@ package com.emiz.cinema.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "movie_dates_times")
-public class MovieDateTime {
+@Table(name = "tickets")
+public class Tickets {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,16 +12,18 @@ public class MovieDateTime {
     private Long movieId;
     private String showDate;
     private String showTime;
-    private Long availableSeats;
+    private String email;
+    private Long seats;
 
-    public MovieDateTime() {
+    public Tickets() {
     }
 
-    public MovieDateTime(Long movieId, String showDate, String showTime, Long availableSeats) {
+    public Tickets(Long movieId, String showDate, String showTime, String email, Long seats) {
         this.movieId = movieId;
         this.showDate = showDate;
         this.showTime = showTime;
-        this.availableSeats = availableSeats;
+        this.email = email;
+        this.seats = seats;
     }
 
     public Long getId() {
@@ -56,11 +58,19 @@ public class MovieDateTime {
         this.showTime = showTime;
     }
 
-    public Long getAvailableSeats() {
-        return availableSeats;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAvailableSeats(Long availableSeats) {
-        this.availableSeats = availableSeats;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Long seats) {
+        this.seats = seats;
     }
 }

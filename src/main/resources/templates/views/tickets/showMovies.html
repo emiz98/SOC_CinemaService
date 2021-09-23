@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Add New Ticket</h1>
+            <div class="card-body">
+                <form th:action="@{/tickets/new/shows}" th:object="${ticket}" method="post"/>
+                <div class="form-group">
+                    <label>Select Movie</label>
+                    <select name="movie" th:value="*{movie}">
+                        <th:block th:each="movie:${movies}">
+                            <option th:value="${movie.id}" th:text="${movie.title}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <br>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary mt-2">Next</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

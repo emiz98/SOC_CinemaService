@@ -5,7 +5,7 @@
 <div class="container">
     <div th:replace="fragments/header :: header"></div>
     <div class="row">
-        <div class="col-lg-3"><a th:href="@{/showTimes/new/{id} (id=${movieId})}" class="btn btn-primary btn-sm mb-3">Add Show Time</a></div>
+        <div class="col-lg-3"><a th:href="@{/showT/new/{id} (id=${movieId})}" class="btn btn-primary btn-sm mb-3">Add Show Time</a></div>
 
     </div>
 
@@ -26,12 +26,12 @@
                 <tbody>
                 <tr th:each="movieShowTime:${movieShowTimes}">
                     <td th:text="${movieShowTime.id}"></td>
-                    <td th:text="${movieShowTime.movieId}"></td>
-                    <td th:text="${movieShowTime.showDate}"></td>
-                    <td th:text="${movieShowTime.showTime}"></td>
+                    <td th:text="${movieShowTime.movie.getTitle()}"></td>
+                    <td th:text="${movieShowTime.dateSlot.getDate()}"></td>
+                    <td th:text="${movieShowTime.timeSlot.getTime()}"></td>
                     <td th:text="${movieShowTime.availableSeats}"></td>
                     <td>
-                        <a th:href="@{/showTimes/{movieId}/{id} (id=${movieShowTime.id},movieId=${movieId}) }" type="button" class="btn btn-danger"><i
+                        <a th:href="@{/showT/{movieId}/{id} (id=${movieShowTime.id},movieId=${movieId}) }" type="button" class="btn btn-danger"><i
                                 class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>

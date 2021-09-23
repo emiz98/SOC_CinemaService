@@ -16,8 +16,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">MovieId</th>
-                    <th scope="col">Show Date</th>
-                    <th scope="col">Show Time</th>
+                    <th scope="col">Show Date Time</th>
                     <th scope="col">Customer Email</th>
                     <th scope="col">Ordered Seats</th>
                     <th scope="col">Actions</th>
@@ -27,8 +26,7 @@
                 <tr th:each="ticket:${tickets}">
                     <td th:text="${ticket.id}"></td>
                     <td th:text="${ticket.movieId}"></td>
-                    <td th:text="${ticket.showDate}"></td>
-                    <td th:text="${ticket.showTime}"></td>
+                    <td th:text="${ticket.showDTId}"></td>
                     <td th:text="${ticket.email}"></td>
                     <td th:text="${ticket.seats}"></td>
                     <td>

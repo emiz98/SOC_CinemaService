@@ -10,22 +10,17 @@
             <div class="card-body">
                 <form th:action="@{/tickets}" th:object="${ticket}" method="post"/>
                 <div class="form-group">
-<!--                    <label>Select the date</label>-->
-<!--                    <select name="showDate" th:value="*{showDate}">-->
-<!--                        <th:block th:each="date:${dates}">-->
-<!--                            <option th:value="${date.date}" th:text="${date.date}"></option>-->
-<!--                        </th:block>-->
-<!--                    </select>-->
-<!--                    <br><br>-->
-<!--                    <label>Select the Time</label>-->
-<!--                    <select name="showTime" th:value="*{showTime}">-->
-<!--                        <th:block th:each="time:${times}">-->
-<!--                            <option th:value="${time.time}" th:text="${time.time}"></option>-->
-<!--                        </th:block>-->
-<!--                    </select>-->
-<!--                    <br><br>-->
-<!--                    <label>Available Seats</label>-->
-<!--                    <input type="number" name="availableSeats" th:value="60">-->
+                    <input type="number" name="movieId" th:value="*{movieId}" hidden>
+                    <label>Select show date time</label>
+                    <select name="showDTId" th:value="*{showDTId}" class="form-control">
+                        <th:block th:each="movieShowTime:${movieShowTimes}">
+                            <option th:value="${movieShowTime.id}" th:text="'Date:'+${movieShowTime.showDate}+' Time:'+${movieShowTime.showTime}"></option>
+                        </th:block>
+                    </select>
+                    <label>Customer Email</label>
+                    <input type="text" name="email" class="form-control">
+                    <label>No of Seats</label>
+                    <input type="number" name="seats" class="form-control">
                 </div>
                 <br>
                 <div class="box-footer">

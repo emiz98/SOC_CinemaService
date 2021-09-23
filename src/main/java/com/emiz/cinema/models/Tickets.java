@@ -10,18 +10,16 @@ public class Tickets {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long movieId;
-    private String showDate;
-    private String showTime;
+    private Long showDTId;
     private String email;
     private Long seats;
 
     public Tickets() {
     }
 
-    public Tickets(Long movieId, String showDate, String showTime, String email, Long seats) {
+    public Tickets(Long movieId, Long showDTId, String email, Long seats) {
         this.movieId = movieId;
-        this.showDate = showDate;
-        this.showTime = showTime;
+        this.showDTId = showDTId;
         this.email = email;
         this.seats = seats;
     }
@@ -42,20 +40,12 @@ public class Tickets {
         this.movieId = movieId;
     }
 
-    public String getShowDate() {
-        return showDate;
+    public Long getShowDTId() {
+        return showDTId;
     }
 
-    public void setShowDate(String showDate) {
-        this.showDate = showDate;
-    }
-
-    public String getShowTime() {
-        return showTime;
-    }
-
-    public void setShowTime(String showTime) {
-        this.showTime = showTime;
+    public void setShowDTId(Long showDTId) {
+        this.showDTId = showDTId;
     }
 
     public String getEmail() {

@@ -10,11 +10,11 @@
             <div class="card-body">
                 <form th:action="@{/tickets}" th:object="${ticket}" method="post"/>
                 <div class="form-group">
-                    <input type="number" name="movieId" th:value="*{movieId}" hidden>
+                    <input type="number" name="movie" th:value="*{movie}" hidden>
                     <label>Select show date time</label>
-                    <select name="showDTId" th:value="*{showDTId}" class="form-control">
+                    <select name="movieShowTime" th:value="*{movieShowTime}" class="form-control">
                         <th:block th:each="movieShowTime:${movieShowTimes}">
-                            <option th:value="${movieShowTime.id}" th:text="'Date:'+${movieShowTime.showDate}+' Time:'+${movieShowTime.showTime}"></option>
+                            <option th:value="${movieShowTime.getId()}" th:text="'Date:'+${movieShowTime.getTimeSlot().getTime()}+' Time:'+${movieShowTime.getDateSlot().getDate()}"></option>
                         </th:block>
                     </select>
                     <label>Customer Email</label>

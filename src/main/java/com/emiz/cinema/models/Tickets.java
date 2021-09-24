@@ -9,17 +9,21 @@ public class Tickets {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long movieId;
-    private Long showDTId;
+    @ManyToOne
+    @JoinColumn(name = "movie")
+    private Movie movie;
+    @ManyToOne
+    @JoinColumn(name = "show_time")
+    private MovieShowTime movieShowTime;
     private String email;
     private Long seats;
 
     public Tickets() {
     }
 
-    public Tickets(Long movieId, Long showDTId, String email, Long seats) {
-        this.movieId = movieId;
-        this.showDTId = showDTId;
+    public Tickets(Movie movie, MovieShowTime movieShowTime, String email, Long seats) {
+        this.movie = movie;
+        this.movieShowTime = movieShowTime;
         this.email = email;
         this.seats = seats;
     }
@@ -32,20 +36,20 @@ public class Tickets {
         this.id = id;
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
-    public Long getShowDTId() {
-        return showDTId;
+    public MovieShowTime getMovieShowTime() {
+        return movieShowTime;
     }
 
-    public void setShowDTId(Long showDTId) {
-        this.showDTId = showDTId;
+    public void setMovieShowTime(MovieShowTime movieShowTime) {
+        this.movieShowTime = movieShowTime;
     }
 
     public String getEmail() {

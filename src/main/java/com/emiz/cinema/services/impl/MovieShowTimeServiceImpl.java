@@ -27,6 +27,11 @@ public class MovieShowTimeServiceImpl implements MovieShowTimeService {
     }
 
     @Override
+    public MovieShowTime getShowTimeById(Long id) {
+        return movieShowTimeRepo.findById(id).get();
+    }
+
+    @Override
     public void deleteShowTime(Long id) {
         movieShowTimeRepo.deleteById(id);
     }

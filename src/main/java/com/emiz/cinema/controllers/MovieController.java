@@ -2,9 +2,11 @@ package com.emiz.cinema.controllers;
 
 import com.emiz.cinema.models.Movie;
 import com.emiz.cinema.services.MovieService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -28,13 +30,19 @@ public class MovieController {
     public String createMovie(Model model) {
         Movie movie = new Movie();
         model.addAttribute("movie", movie);
+
+//        final String uri = "https://api.themoviedb.org/3/search/movie?api_key=2d993593c6f4bc11d6feb87b34548c0b&query=DUNE";
+//        RestTemplate restTemplate = new RestTemplate();
+//        String response = restTemplate.getForObject(uri, String.class);
+//        model.addAttribute("apis",response);
+
         return "views/movies/create_movie";
     }
 
     @PostMapping("/movies")
     public String storeMovie(@ModelAttribute("movie") Movie movie, @RequestParam("imageFile") MultipartFile imageFile) {
         try {
-            movieService.storeMovie(movie,imageFile);
+            movieService.storeMovie(movie, imageFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +56,7 @@ public class MovieController {
     }
 
     @PostMapping("/movies/{id}")
-    public String updateMovie(@PathVariable Long id, @ModelAttribute("movie") Movie movie,@RequestParam("imageFile") MultipartFile imageFile, Model model) {
+    public String updateMovie(@PathVariable Long id, @ModelAttribute("movie") Movie movie, @RequestParam("imageFile") MultipartFile imageFile, Model model) {
         Movie existingMovie = movieService.getMovieById(id);
         existingMovie.setTitle(movie.getTitle());
         if (movie.getDescription() != "") {
@@ -66,7 +74,7 @@ public class MovieController {
         existingMovie.setTmdbId(movie.getTmdbId());
 
         try {
-            movieService.updateMovie(existingMovie,imageFile);
+            movieService.updateMovie(existingMovie, imageFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

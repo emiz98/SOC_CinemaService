@@ -12,7 +12,7 @@
         <div class="col-12">
 
             <div class="row mb-5">
-                <div class="col-md-4" th:each="movie:${movies}">
+                <div class="col-md-4 mb-4" th:each="movie:${movies}">
                     <div class="card">
                         <img th:src="@{'assets/images/'+ ${movie.poster_path}}" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -29,31 +29,31 @@
             </div>
 
 
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">TMDB</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Poster</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="movie:${movies}">
-                    <td th:text="${movie.id}"></td>
-                    <td th:text="${movie.tmdbId}"></td>
-                    <td th:text="${movie.title}"></td>
-                    <td th:text="${movie.poster_path}"></td>
-                    <td>
-                        <a th:href="@{/movies/edit/{id} (id=${movie.id}) }" type="button" class="btn btn-success"><i
-                                class="fas fa-edit"></i></a>
-                        <a th:href="@{/movies/{id} (id=${movie.id}) }" type="button" class="btn btn-danger"><i
-                                class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+<!--            <table class="table table-bordered">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">Id</th>-->
+<!--                    <th scope="col">TMDB</th>-->
+<!--                    <th scope="col">Title</th>-->
+<!--                    <th scope="col">Poster</th>-->
+<!--                    <th scope="col">Actions</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="movie:${movies}">-->
+<!--                    <td th:text="${movie.id}"></td>-->
+<!--                    <td th:text="${movie.tmdbId}"></td>-->
+<!--                    <td th:text="${movie.title}"></td>-->
+<!--                    <td th:text="${movie.poster_path}"></td>-->
+<!--                    <td>-->
+<!--                        <a th:href="@{/movies/edit/{id} (id=${movie.id}) }" type="button" class="btn btn-success"><i-->
+<!--                                class="fas fa-edit"></i></a>-->
+<!--                        <a th:href="@{/movies/{id} (id=${movie.id}) }" type="button" class="btn btn-danger"><i-->
+<!--                                class="far fa-trash-alt"></i></a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
         </div>
     </div>
 </div>

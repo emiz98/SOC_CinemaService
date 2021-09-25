@@ -5,6 +5,7 @@ import com.emiz.cinema.models.MovieShowTime;
 import com.emiz.cinema.services.MovieService;
 import com.emiz.cinema.services.MovieShowTimeService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class MovieRestController {
     }
 
     @GetMapping("/movie/{id}")
-    public Movie getAllMovies(@PathVariable Long id) {
+    public Movie getMovieDetails(@PathVariable Long id) {
         return movieService.getMovieById(id);
     }
 

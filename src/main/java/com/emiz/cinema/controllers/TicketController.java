@@ -53,6 +53,9 @@ public class TicketController {
 
     @GetMapping("/tickets/{id}")
     public String deleteTicket(@PathVariable Long id) {
+        Tickets deletingTicket = ticketService.getTicketById(id);
+        MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(deletingTicket.getMovieShowTime().getId());
+        existingShowTime.setAvailableSeats(existingShowTime.getAvailableSeats()+deletingTicket.getSeats());
         ticketService.deleteTicket(id);
         return "redirect:/tickets";
     }

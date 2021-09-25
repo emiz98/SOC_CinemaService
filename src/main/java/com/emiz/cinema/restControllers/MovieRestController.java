@@ -33,7 +33,15 @@ public class MovieRestController {
     }
 
     @GetMapping("/showTimes/{id}")
-    public List<MovieShowTime> getMovieShowTimes(@PathVariable Long id){
+    public List<MovieShowTime> getMovieShowTimes(@PathVariable Long id) {
         return movieShowTimeService.getAllByMovieId(id);
+    }
+
+    @PostMapping("/showTimes")
+    public MovieShowTime updateSeats(@RequestBody MovieShowTime movieShowTime) {
+        MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(movieShowTime.getId());
+        existingShowTime.setSeats(movieShowTime.getSeats());
+        movieShowTimeService.store(existingShowTime);
+        return existingShowTime;
     }
 }

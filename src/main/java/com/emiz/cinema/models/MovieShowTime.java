@@ -1,5 +1,7 @@
 package com.emiz.cinema.models;
 
+import org.hibernate.mapping.Array;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class MovieShowTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long availableSeats;
+    private String seats;
 
     @ManyToOne
     @JoinColumn(name="movie_id")
@@ -26,8 +29,9 @@ public class MovieShowTime {
     public MovieShowTime() {
     }
 
-    public MovieShowTime(Long availableSeats, Movie movie, DateSlot dateSlot, TimeSlot timeSlot) {
+    public MovieShowTime(Long availableSeats, String seats, Movie movie, DateSlot dateSlot, TimeSlot timeSlot) {
         this.availableSeats = availableSeats;
+        this.seats = seats;
         this.movie = movie;
         this.dateSlot = dateSlot;
         this.timeSlot = timeSlot;
@@ -71,5 +75,13 @@ public class MovieShowTime {
 
     public void setTimeSlot(TimeSlot timeSlot) {
         this.timeSlot = timeSlot;
+    }
+
+    public String getSeats() {
+        return seats;
+    }
+
+    public void setSeats(String seats) {
+        this.seats = seats;
     }
 }

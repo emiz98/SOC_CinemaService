@@ -44,10 +44,15 @@ public class TicketController {
     @PostMapping("/tickets")
     public String storeTicket(@ModelAttribute("ticket") Tickets tickets) {
         MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(tickets.getMovieShowTime().getId());
-        if (existingShowTime.getAvailableSeats() >= tickets.getSeats()) {
-            existingShowTime.setAvailableSeats(existingShowTime.getAvailableSeats() - tickets.getSeats());
-            ticketService.storeTicket(tickets);
+        String seats ="";
+        if(existingShowTime.getSeats()=="" || existingShowTime.getSeats()==null){
+            seats = tickets.getSeats();
         }
+        else{
+            seats = existingShowTime.getSeats()+','+tickets.getSeats();
+        }
+        existingShowTime.setSeats(seats);
+        ticketService.storeTicket(tickets);
         return "redirect:/tickets";
     }
 
@@ -55,7 +60,9 @@ public class TicketController {
     public String deleteTicket(@PathVariable Long id) {
         Tickets deletingTicket = ticketService.getTicketById(id);
         MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(deletingTicket.getMovieShowTime().getId());
-        existingShowTime.setAvailableSeats(existingShowTime.getAvailableSeats()+deletingTicket.getSeats());
+        String seats = existingShowTime.getSeats();
+        String updateSeats = seats.replace(','+deletingTicket.getSeats(),"");
+        existingShowTime.setSeats(updateSeats);
         ticketService.deleteTicket(id);
         return "redirect:/tickets";
     }

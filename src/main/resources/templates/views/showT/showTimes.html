@@ -19,7 +19,6 @@
                     <th scope="col">MovieId</th>
                     <th scope="col">DateId</th>
                     <th scope="col">TimeId</th>
-                    <th scope="col">Available Seats</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -29,7 +28,6 @@
                     <td th:text="${movieShowTime.movie.getTitle()}"></td>
                     <td th:text="${movieShowTime.dateSlot.getDate()}"></td>
                     <td th:text="${movieShowTime.timeSlot.getTime()}"></td>
-                    <td th:text="${movieShowTime.availableSeats}"></td>
                     <td>
                         <a th:href="@{/showT/{movieId}/{id} (id=${movieShowTime.id},movieId=${movieId}) }" type="button" class="btn btn-danger"><i
                                 class="far fa-trash-alt"></i></a>

@@ -28,14 +28,16 @@ public class TicketRestController {
     }
 
     @PostMapping("/tickets")
-    public Tickets createTicket(@RequestBody Tickets ticket){
-        MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(ticket.getMovieShowTime().getId());
-        if (existingShowTime.getAvailableSeats() >= ticket.getSeats()) {
-            existingShowTime.setAvailableSeats(existingShowTime.getAvailableSeats() - ticket.getSeats());
-            return ticketService.storeTicket(ticket);
+    public Tickets createTicket(@RequestBody Tickets tickets){
+        MovieShowTime existingShowTime = movieShowTimeService.getShowTimeById(tickets.getMovieShowTime().getId());
+        String seats ="";
+        if(existingShowTime.getSeats()=="" || existingShowTime.getSeats()==null){
+            seats = tickets.getSeats();
         }
-        else {
-            return null;
+        else{
+            seats = existingShowTime.getSeats()+','+tickets.getSeats();
         }
+        existingShowTime.setSeats(seats);
+        return ticketService.storeTicket(tickets);
     }
 }

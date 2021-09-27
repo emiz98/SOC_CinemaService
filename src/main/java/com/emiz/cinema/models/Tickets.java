@@ -16,12 +16,12 @@ public class Tickets {
     @JoinColumn(name = "show_time")
     private MovieShowTime movieShowTime;
     private String email;
-    private Long seats;
+    private String seats;
 
     public Tickets() {
     }
 
-    public Tickets(Movie movie, MovieShowTime movieShowTime, String email, Long seats) {
+    public Tickets(Movie movie, MovieShowTime movieShowTime, String email, String seats) {
         this.movie = movie;
         this.movieShowTime = movieShowTime;
         this.email = email;
@@ -60,11 +60,11 @@ public class Tickets {
         this.email = email;
     }
 
-    public Long getSeats() {
+    public String getSeats() {
         return seats;
     }
 
-    public void setSeats(Long seats) {
+    public void setSeats(String seats) {
         this.seats = seats;
     }
 }

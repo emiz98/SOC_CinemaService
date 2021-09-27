@@ -11,26 +11,24 @@ public class MovieShowTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long availableSeats;
-    private String seats;
+    private String seats = "65";
 
     @ManyToOne
-    @JoinColumn(name="movie_id")
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @ManyToOne
-    @JoinColumn(name="date_slot")
+    @JoinColumn(name = "date_slot")
     private DateSlot dateSlot;
 
     @ManyToOne
-    @JoinColumn(name="time_slot")
+    @JoinColumn(name = "time_slot")
     private TimeSlot timeSlot;
 
     public MovieShowTime() {
     }
 
-    public MovieShowTime(Long availableSeats, String seats, Movie movie, DateSlot dateSlot, TimeSlot timeSlot) {
-        this.availableSeats = availableSeats;
+    public MovieShowTime(String seats, Movie movie, DateSlot dateSlot, TimeSlot timeSlot) {
         this.seats = seats;
         this.movie = movie;
         this.dateSlot = dateSlot;
@@ -43,14 +41,6 @@ public class MovieShowTime {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getAvailableSeats() {
-        return availableSeats;
-    }
-
-    public void setAvailableSeats(Long availableSeats) {
-        this.availableSeats = availableSeats;
     }
 
     public Movie getMovie() {

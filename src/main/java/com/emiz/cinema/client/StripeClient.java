@@ -3,6 +3,8 @@ import com.stripe.Stripe;
 import com.stripe.model.Charge;
 import com.stripe.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,19 +24,19 @@ public class StripeClient {
     private Customer getCustomer(String id) throws Exception {
         return Customer.retrieve(id);
     }
-    public Charge chargeNewCard(String token, double amount) throws Exception {
+    public ResponseEntity<?> chargeNewCard(String token, double amount) throws Exception {
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", (int)(amount * 100));
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "LKR");
         chargeParams.put("source", token);
         Charge charge = Charge.create(chargeParams);
-        return charge;
+        return new ResponseEntity<>(charge.toJson(), HttpStatus.OK);
     }
     public Charge chargeCustomerCard(String customerId, int amount) throws Exception {
         String sourceCard = getCustomer(customerId).getDefaultSource();
         Map<String, Object> chargeParams = new HashMap<String, Object>();
         chargeParams.put("amount", amount);
-        chargeParams.put("currency", "USD");
+        chargeParams.put("currency", "LKR");
         chargeParams.put("customer", customerId);
         chargeParams.put("source", sourceCard);
         Charge charge = Charge.create(chargeParams);

@@ -42,14 +42,20 @@ public class MovieShowTimeController {
     }
 
     @PostMapping("/showT")
-    public String storeShowTime(@ModelAttribute("mdt") MovieShowTime mdt){
-        movieShowTimeService.store(mdt);
-        return "redirect:/showT/"+mdt.getMovie().getId();
+    public String storeShowTime(@ModelAttribute("mdt") MovieShowTime mdt, Model model) {
+        Integer size = movieShowTimeService.findDuplicateShowTimes(mdt.getDateSlot(), mdt.getTimeSlot()).size();
+        if (size == 0) {
+            movieShowTimeService.store(mdt);
+        }
+        return "redirect:/showT/" + mdt.getMovie().getId();
+//        model.addAttribute("existingShowTimes", size);
+//        return "views/showT/temp";
+//        return "redirect:/showT/"+mdt.getMovie().getId();
     }
 
     @GetMapping("/showT/{movieId}/{id}")
-    public String deleteShowTime(@PathVariable("movieId") Long movieId, @PathVariable("id") Long id){
+    public String deleteShowTime(@PathVariable("movieId") Long movieId, @PathVariable("id") Long id) {
         movieShowTimeService.deleteShowTime(id);
-        return "redirect:/showT/"+movieId;
+        return "redirect:/showT/" + movieId;
     }
 }

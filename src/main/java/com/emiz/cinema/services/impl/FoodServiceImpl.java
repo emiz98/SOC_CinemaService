@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -52,7 +53,10 @@ public class FoodServiceImpl implements FoodService {
             byte[] bytes = imageFile.getBytes();
             Path path = Paths.get(folder + filename + ".jpg");
             Path deletePath = Paths.get(folder + food.getFood_image());
-            Files.delete(deletePath);
+            try{
+                Files.delete(deletePath);
+            } catch (NoSuchFileException e) {
+            }
             Files.write(path, bytes);
             food.setFood_image(filename + ".jpg");
         }

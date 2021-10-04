@@ -1,7 +1,10 @@
 package com.emiz.cinema.controllers;
 
 import com.emiz.cinema.models.Movie;
+import com.emiz.cinema.services.BannerService;
+import com.emiz.cinema.services.FoodService;
 import com.emiz.cinema.services.MovieService;
+import com.emiz.cinema.services.TicketService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +18,24 @@ import java.io.IOException;
 public class MovieController {
 
     private MovieService movieService;
+    private TicketService ticketService;
+    private FoodService foodService;
+    private BannerService bannerService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, TicketService ticketService, FoodService foodService, BannerService bannerService) {
         this.movieService = movieService;
+        this.ticketService = ticketService;
+        this.foodService = foodService;
+        this.bannerService = bannerService;
+    }
+
+    @GetMapping("/")
+    public String index(Model model){
+        model.addAttribute("movieCount",movieService.getAllMovies().size());
+        model.addAttribute("ticketCount",ticketService.getAllTickets().size());
+        model.addAttribute("foodCount",foodService.getAllFood().size());
+        model.addAttribute("bannerCount",bannerService.getAllBanners().size());
+        return "index";
     }
 
     @GetMapping("/movies")

@@ -1,6 +1,8 @@
 package com.emiz.cinema.services.impl;
 
+import com.emiz.cinema.models.DateSlot;
 import com.emiz.cinema.models.MovieShowTime;
+import com.emiz.cinema.models.TimeSlot;
 import com.emiz.cinema.repos.MovieShowTimeRepo;
 import com.emiz.cinema.services.MovieShowTimeService;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,11 @@ public class MovieShowTimeServiceImpl implements MovieShowTimeService {
     @Override
     public List<MovieShowTime> getAllByMovieId(Long id) {
         return movieShowTimeRepo.findByMovieId(id);
+    }
+
+    @Override
+    public List<MovieShowTime> findDuplicateShowTimes(DateSlot date, TimeSlot time) {
+        return movieShowTimeRepo.findByDateSlotAndTimeSlot(date, time);
     }
 
     @Override

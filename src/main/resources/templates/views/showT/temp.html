@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/header :: header"></div>
+
+    <div th:text="${existingShowTimes}"></div>
+
+
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

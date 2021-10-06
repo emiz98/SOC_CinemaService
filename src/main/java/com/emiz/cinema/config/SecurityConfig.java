@@ -29,5 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/api/v1/**");
         web.ignoring().antMatchers("/assets/**");
+        web.ignoring().antMatchers("/assets//**");
     }
 }

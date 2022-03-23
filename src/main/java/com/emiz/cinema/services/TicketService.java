@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface TicketService {
     List<Tickets> getAllTickets();
+    List<Tickets> getAllTicketsByEmail(String email);
     List<Movie> getAllMovies();
     List<MovieShowTime> getAllMovieShowTimesByMovieId(Long id);
     Tickets storeTicket(Tickets tickets);

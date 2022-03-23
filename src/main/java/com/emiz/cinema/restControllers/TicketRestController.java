@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/")
 public class TicketRestController {
@@ -24,7 +24,7 @@ public class TicketRestController {
 
     @GetMapping("/tickets/{email}")
     public List<Tickets> getTicketsByEmail(@PathVariable String email){
-        return ticketService.getAllTickets();
+        return ticketService.getAllTicketsByEmail(email);
     }
 
     @PostMapping("/tickets")

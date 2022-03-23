@@ -30,6 +30,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public List<Tickets> getAllTicketsByEmail(String email) {
+        return ticketRepo.findByEmail(email);
+    }
+
+    @Override
     public List<Movie> getAllMovies() {
         return movieRepo.findAll();
     }
